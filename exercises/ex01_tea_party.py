@@ -1,4 +1,4 @@
-"""Exercise 01 Tea Party - I dont know what it does yet so cant really docstring well"""
+"""Exercise 01 Tea Party - uses guests, get supplies needed + cost"""
 
 __author__: str = "730641475"
 
@@ -8,9 +8,9 @@ def main_planner(guests: int) -> None:
 
     print("A Cozy Tea Party for " + str(guests) + " People :D")
 
-    print("Tea Bags: " + str(tea_bags(guests)))
+    print("Tea Bags: " + str(tea_bags(people=guests)))
 
-    print("Treats: " + str(treats(guests)))
+    print("Treats: " + str(treats(people=guests)))
 
     print("Cost: $" + str(cost(tea_count=tea_bags(guests), treat_count=treats(guests))))
 
