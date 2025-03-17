@@ -56,7 +56,7 @@ def input_guess(expected_length: int) -> str:
 
     # if the guess is the wrong length, start looping till you it's the right length
     while len(guess) != expected_length:
-        guess = input(f"That wasn't {expected_length} characters! Try again:")
+        guess = input(f"That wasn't {expected_length} chars! Try again:")
 
     # once you exit the while loop,
     # it means guess = expected_length, so we should return the valid guess
