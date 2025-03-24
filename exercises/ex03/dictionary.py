@@ -23,13 +23,41 @@ print(invert({"hi": "how_ymou", "bye": "how_you", "wha": "nvm"}))
 
 
 def count(input: list[str]) -> dict[str, int]:
+    """Returns dictionary counting number of times x occurs in a list."""
+    # returns as x:#times
+
     output: dict[str, int] = {}
 
-    for key in input:
-        if key in input:
-            output[key] += 1
+    for list_i in input:
+        if list_i in output:
+            output[list_i] += 1
 
         else:
-            output[key] = 1
+            output[list_i] = 1
 
     return output
+
+
+print(
+    count(
+        [
+            "john",
+            "john",
+            "jarnATHAN",
+            "me",
+            "john",
+            "monsieur peanut butter",
+            "me",
+            "JARNATHAN",
+        ]
+    )
+)
+
+
+def favorite_color(people_fav: dict[str, str]) -> str:
+    colors: list[str] = []
+
+    for person in people_fav:
+        colors.append(people_fav[person])
+
+    return "hi"
