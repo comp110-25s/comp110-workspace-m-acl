@@ -19,7 +19,7 @@ def invert(input: dict[str, str]) -> dict[str, str]:
     return output
 
 
-print(invert({"hi": "how_ymou", "bye": "how_you", "wha": "nvm"}))
+print()
 
 
 def count(input: list[str]) -> dict[str, int]:
@@ -38,26 +38,59 @@ def count(input: list[str]) -> dict[str, int]:
     return output
 
 
-print(
-    count(
-        [
-            "john",
-            "john",
-            "jarnATHAN",
-            "me",
-            "john",
-            "monsieur peanut butter",
-            "me",
-            "JARNATHAN",
-        ]
-    )
-)
+print()
 
 
 def favorite_color(people_fav: dict[str, str]) -> str:
+    """Gets everyone's favorite color and returns most popular"""
     colors: list[str] = []
 
     for person in people_fav:
         colors.append(people_fav[person])
 
-    return "hi"
+    best_col: str = ""
+    max_vote: int = 0
+    for color in count(colors):
+        if count(colors)[color] > max_vote:
+            best_col = color
+            max_vote = count(colors)[color]
+
+    return best_col
+
+
+print()
+
+
+def bin_len(listo: list[str]) -> dict[int, set[str]]:
+    """takes list of strings and returns grouped by word length"""
+    bins: dict[int, set[str]] = {}
+
+    for word in listo:
+
+        if not len(word) in bins:
+            bins[len(word)] = {word}
+
+        else:
+            bins[len(word)].add(word)
+
+    return bins
+
+
+print(
+    bin_len(
+        [
+            "john",
+            "purple",
+            "micah",
+            "yellow",
+            "heyzzues",
+            "yellow",
+            "athena",
+            "blue",
+            "grumbus",
+            "purple",
+            "jaranathan",
+            "yellow",
+        ]
+    )
+)
