@@ -84,7 +84,7 @@ def test_count_edge_empty() -> None:
     assert count([]) == {}
 
 
-def test_favorite_color_use_1() -> None:
+def test_favorite_color_use_multi() -> None:
 
     assert (
         favorite_color(
@@ -101,30 +101,25 @@ def test_favorite_color_use_1() -> None:
     )
 
 
-def test_favorite_color_use_2() -> None:
+def test_favorite_color_use_single() -> None:
 
     assert (
         favorite_color(
             {
-                "john": "purple",
-                "micah": "yellow",
-                "heyzzues": "yellow",
-                "athena": "blue",
-                "grumbus": "purple",
-                "jaranathan": "yellow",
+                "heyzzues": "magenta",
             }
         )
-        == "yellow"
+        == "magenta"
     )
 
 
-def test_favorite_color_edge() -> None:
+def test_favorite_color_edge_empty() -> None:
     """Checks that empty dict returns empty str"""
 
     assert favorite_color({}) == ""
 
 
-def test_bin_len() -> None:
+def test_bin_len_use_duplicates() -> None:
 
     assert bin_len(
         [
@@ -152,23 +147,13 @@ def test_bin_len() -> None:
 
     # just adding these - should be testing for the same use case
     # if this test fails, can separate along this line into multiple tests
+
+
+def test_bin_len_use_no_dupl() -> None:
+
     assert bin_len(["the", "quick", "fox"]) == {3: {"the", "fox"}, 5: {"quick"}}
-    assert bin_len(["the", "the", "fox"]) == {3: {"the", "fox"}}
 
 
-# Also inside the exercises/ex03 directory, create a file named dictionary_test.py. Add
-# a docstring and establish an __author__ in this file as well.
+def test_bin_len_edge_empty() -> None:
 
-# For each function from below (invert, count, favorite_color, bin_len), you are to
-#
-#  define at least 3x unit test functions. Remember that a unit test function
-# starts with test_.
-
-# The 3 unit tests should consist of:
-
-# One edge case
-# Two use cases
-# Include descriptive function names and docstrings, so that it captures
-#  what is being tested.
-
-# python -m pytest exercises/ex03
+    assert bin_len([]) == {}
