@@ -16,3 +16,26 @@ def pack(df: float) -> str:
 
 
 print(pack(60))
+
+
+def group_names(names: list[str]) -> dict[str, int]:
+    groups: dict[str, int] = {}
+    first_letter: str
+    for n in names:
+        first_letter = n[0]
+        if first_letter in groups:
+            groups[first_letter] += 1
+
+        else:
+            groups[first_letter] = 1
+
+    return groups
+
+
+ppl: list[str] = ["Karen", "Emily", "Kris"]
+output: dict[str, int] = group_names(names=ppl)
+
+print(output)
+
+output["I"] = 1
+print(output)

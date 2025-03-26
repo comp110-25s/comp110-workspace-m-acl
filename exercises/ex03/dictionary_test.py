@@ -2,14 +2,21 @@
 
 __author__: str = "730641475"
 
-# import pytest
+import pytest  # when i want to test for error
+
+
+# The 3 unit tests should consist of:
+
+# One edge case
+# Two use cases
+
+# python -m pytest exercises/ex03
 
 from exercises.ex03.dictionary import invert, favorite_color, count, bin_len
 
 
-def test_invert() -> None:
-    assert True
-
+def test_invert_use_multi_kp() -> None:
+    """Use case for multiple key-value pairs"""
     assert invert({"hi": "how_ymou", "bye": "how_you", "wha": "nvm"}) == {
         "how_ymou": "hi",
         "how_you": "bye",
@@ -17,8 +24,28 @@ def test_invert() -> None:
     }
 
 
-def test_count() -> None:
-    assert True
+def test_invert_use_single_kp() -> None:
+    """use case for if only one key-pair value"""
+
+    # single key-value pair
+    assert invert({"apple": "cat"}) == {"cat": "apple"}
+
+
+def test_invert_edge_empty() -> None:
+    """Checks if empty dictionary returns empty dict"""
+    assert invert({}) == {}
+
+
+def test_invert_edge_keyerror() -> None:
+    """Checks if multiple identical values in dict, raises KeyError"""
+    # b/c values --> keys, keys must be unique
+    with pytest.raises(KeyError):
+        my_dictionary = {"kris": "jordan", "michael": "jordan"}
+        invert(my_dictionary)
+
+
+def test_count_use_multi() -> None:
+    """Checks that list of multiple returns count"""
 
     assert count(
         [
@@ -40,18 +67,80 @@ def test_count() -> None:
     }
 
 
-def test_favorite_color() -> None:
-    assert True
+def test_count_use_only_one() -> None:
+    """Checks that list of just 1 string returns dict with 1 k-p"""
+    assert count(
+        [
+            "john",
+            "john",
+            "john",
+            "john",
+        ]
+    ) == {"john": 4}
 
-    assert favorite_color(
-        {
-            "john": "purple",
-            "micah": "yellow",
-            "heyzzues": "yellow",
-            "athena": "blue",
-            "grumbus": "purple",
-            "jaranathan": "yellow",
-        }
+
+def test_count_edge_empty() -> None:
+    """Checks that if input empty list, get an empty dictionary"""
+    assert count([]) == {}
+
+
+def test_favorite_color_use_1() -> None:
+
+    assert (
+        favorite_color(
+            {
+                "john": "purple",
+                "micah": "yellow",
+                "heyzzues": "yellow",
+                "athena": "blue",
+                "grumbus": "purple",
+                "jaranathan": "yellow",
+            }
+        )
+        == "yellow"
+    )
+
+
+def test_favorite_color_use_2() -> None:
+
+    assert (
+        favorite_color(
+            {
+                "john": "purple",
+                "micah": "yellow",
+                "heyzzues": "yellow",
+                "athena": "blue",
+                "grumbus": "purple",
+                "jaranathan": "yellow",
+            }
+        )
+        == "yellow"
+    )
+
+
+def test_favorite_color_edge() -> None:
+    """Checks that empty dict returns empty str"""
+
+    assert favorite_color({}) == ""
+
+
+def test_bin_len() -> None:
+
+    assert bin_len(
+        [
+            "john",
+            "purple",
+            "micah",
+            "yellow",
+            "heyzzues",
+            "yellow",
+            "athena",
+            "blue",
+            "grumbus",
+            "purple",
+            "jaranathan",
+            "yellow",
+        ]
     ) == {
         4: {"blue", "john"},
         6: {"purple", "yellow", "athena"},
@@ -61,8 +150,8 @@ def test_favorite_color() -> None:
         10: {"jaranathan"},
     }
 
-
-def test_bin_len() -> None:
+    # just adding these - should be testing for the same use case
+    # if this test fails, can separate along this line into multiple tests
     assert bin_len(["the", "quick", "fox"]) == {3: {"the", "fox"}, 5: {"quick"}}
     assert bin_len(["the", "the", "fox"]) == {3: {"the", "fox"}}
 

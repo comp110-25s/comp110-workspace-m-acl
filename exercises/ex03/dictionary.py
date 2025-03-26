@@ -19,9 +19,6 @@ def invert(input: dict[str, str]) -> dict[str, str]:
     return output
 
 
-print()
-
-
 def count(input: list[str]) -> dict[str, int]:
     """Returns dictionary counting number of times x occurs in a list."""
     # returns as x:#times
@@ -36,9 +33,6 @@ def count(input: list[str]) -> dict[str, int]:
             output[list_i] = 1
 
     return output
-
-
-print()
 
 
 def favorite_color(people_fav: dict[str, str]) -> str:
@@ -58,9 +52,6 @@ def favorite_color(people_fav: dict[str, str]) -> str:
     return best_col
 
 
-print()
-
-
 def bin_len(listo: list[str]) -> dict[int, set[str]]:
     """takes list of strings and returns grouped by word length"""
     bins: dict[int, set[str]] = {}
@@ -74,23 +65,3 @@ def bin_len(listo: list[str]) -> dict[int, set[str]]:
             bins[len(word)].add(word)
 
     return bins
-
-
-print(
-    bin_len(
-        [
-            "john",
-            "purple",
-            "micah",
-            "yellow",
-            "heyzzues",
-            "yellow",
-            "athena",
-            "blue",
-            "grumbus",
-            "purple",
-            "jaranathan",
-            "yellow",
-        ]
-    )
-)
