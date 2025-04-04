@@ -15,7 +15,7 @@ def pack(df: float) -> str:
     return "idk this aint clear"
 
 
-print(pack(60))
+# print(pack(60))
 
 
 def group_names(names: list[str]) -> dict[str, int]:
@@ -35,7 +35,19 @@ def group_names(names: list[str]) -> dict[str, int]:
 ppl: list[str] = ["Karen", "Emily", "Kris"]
 output: dict[str, int] = group_names(names=ppl)
 
-print(output)
+# print(output)
 
 output["I"] = 1
-print(output)
+# print(output)
+
+
+class Profile:
+    username: str
+
+    def __init__(self):
+        self.username = "hi"
+        self.am_cool = True
+
+
+prof: Profile = Profile()
+print(prof.am_cool)
