@@ -1,11 +1,33 @@
 """File to define River class."""
 
-from exercises.ex07.fish import Fish
-from exercises.ex07.bear import Bear
+# import bear
+# import fish
+# class River:
+#     day: int
+#     bears: list[bear.Bear]
+#     fishes: list[fish.Fish]
+
+#     def __init__(self, num_bears: int, num_fish: int) -> None:
+#         self.day = 0
+#         self.bears = []
+#         self.fish = []
+
+#       # the type-ignore is just to get rid of the warnign that I never use x inside it
+#       # x is just for looping, does not need to be accessed inside the loop
+#         for x in range(num_fish):  # type: ignore
+#             self.fish.append(fish.Fish())
+
+#         for x in range(num_bears):  # type: ignore
+#             self.bears.append(bear.Bear())
+
+
+from exercises.ex04.fish import Fish
+from exercises.ex04.bear import Bear
+
 
 class River:
-    
-    def __init__(self, num_fish: int, num_bears:int):
+
+    def __init__(self, num_fish: int, num_bears: int):
         """New River with num_fish Fish and num_bears Bears"""
         self.day: int = 0
         self.fish: list[Fish] = []
@@ -21,19 +43,19 @@ class River:
 
     def bears_eating(self):
         return None
-    
+
     def check_hunger(self):
         return None
-        
+
     def repopulate_fish(self):
         return None
-    
+
     def repopulate_bears(self):
         return None
-    
+
     def view_river(self):
         return None
-            
+
     def one_river_day(self):
         """Simulate one day of life in the river"""
         # Increase day by 1
@@ -56,4 +78,3 @@ class River:
         self.repopulate_bears()
         # Visualize River
         self.view_river()
-            

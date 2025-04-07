@@ -61,6 +61,14 @@ class Point:
         self.x = x
         self.y = y
 
+    def __str__(self) -> str:
+        """Magic method that will print str representation of Point class"""
+
+        return (
+            f"({self.x},{self.y}) \nMethods: {self.dist_from_origin.__name__},"
+            + f"{self.translate_x.__name__}, {self.translate_y.__name__}"
+        )
+
     def dist_from_origin(self) -> float:
         return (self.x**2 + self.y**2) ** 0.5
 
@@ -72,6 +80,7 @@ class Point:
 
 
 pt: Point = Point(2.0, 1.0)
+print(pt)
 print(pt.dist_from_origin())
 pt.translate_y(1)
 print(pt.dist_from_origin())
