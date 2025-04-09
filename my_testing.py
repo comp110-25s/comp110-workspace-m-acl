@@ -1,86 +1,20 @@
-# def pack(df: float) -> str:
-#     """Packing advice"""
-
-#     if df >= 75.0:
-#         return "short sleeves"
-
-#     else:
-#         if df <= 50.0:
-#             if df <= 0.0:
-#                 return "stay inside"
-
-#             else:  # if 0 <= df < 50
-#                 return "long sleeves"
-
-#     return "idk this aint clear"
+from __future__ import annotations
 
 
-# # print(pack(60))
+class Node:
+    value: int
+    next: Node | None
+
+    def __init__(self, val: int, next: Node | None):
+        self.value = val
+        self.next = next
 
 
-# def group_names(names: list[str]) -> dict[str, int]:
-#     groups: dict[str, int] = {}
-#     first_letter: str
-#     for n in names:
-#         first_letter = n[0]
-#         if first_letter in groups:
-#             groups[first_letter] += 1
+def sum(head: Node | None) -> int:
+    """sum all values of nodes in linked list"""
+    if head is None:  # is refers to objects/class
+        return 0
 
-#         else:
-#             groups[first_letter] = 1
-
-#     return groups
-
-
-# ppl: list[str] = ["Karen", "Emily", "Kris"]
-# output: dict[str, int] = group_names(names=ppl)
-
-# # print(output)
-
-# output["I"] = 1
-# # print(output)
-
-
-# class Profile:
-#     username: str
-
-#     def __init__(self):
-#         self.username = "hi"
-#         self.am_cool = True
-
-
-# prof: Profile = Profile()
-# print(prof.am_cool)
-
-
-class Point:
-    x: float
-    y: float
-
-    def __init__(self, x: float, y: float):
-        self.x = x
-        self.y = y
-
-    def __str__(self) -> str:
-        """Magic method that will print str representation of Point class"""
-
-        return (
-            f"({self.x},{self.y}) \nMethods: {self.dist_from_origin.__name__},"
-            + f"{self.translate_x.__name__}, {self.translate_y.__name__}"
-        )
-
-    def dist_from_origin(self) -> float:
-        return (self.x**2 + self.y**2) ** 0.5
-
-    def translate_x(self, dx: float) -> None:
-        self.x += dx
-
-    def translate_y(self, dy: float) -> None:
-        self.y += dy
-
-
-pt: Point = Point(2.0, 1.0)
-print(pt)
-print(pt.dist_from_origin())
-pt.translate_y(1)
-print(pt.dist_from_origin())
+    else:
+        rest: int = sum(head.next)
+        return head.value + rest

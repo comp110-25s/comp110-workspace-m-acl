@@ -21,8 +21,8 @@
 #             self.bears.append(bear.Bear())
 
 
-from exercises.ex04.fish import Fish
-from exercises.ex04.bear import Bear
+from fish import Fish
+from bear import Bear
 
 
 class River:
@@ -38,7 +38,19 @@ class River:
         for _ in range(0, num_bears):
             self.bears.append(Bear())
 
-    def check_ages(self):
+    def check_ages(self) -> None:
+        """oldies die :("""
+        new_fish: list[Fish] = []
+        new_bear: list[Bear] = []
+        for fishboi in self.fish:
+            # less than lives
+            if fishboi.age < 3:
+                new_fish.append(fishboi)
+
+        for bear in self.bears:
+            if bear.age < 5:
+                new_bear.append(bear)
+
         return None
 
     def bears_eating(self):
@@ -53,7 +65,13 @@ class River:
     def repopulate_bears(self):
         return None
 
-    def view_river(self):
+    def view_river(self) -> None:
+        """Gives summary of river"""
+
+        print(f"~~~ Day: {self.day} ~~~")
+        print(f"Fish population: {len(self.fish)}")
+        print(f"Bear population: {len(self.bears)}")
+
         return None
 
     def one_river_day(self):
@@ -78,3 +96,9 @@ class River:
         self.repopulate_bears()
         # Visualize River
         self.view_river()
+
+    def one_river_week(self) -> None:
+        for _ in range(1, 7):
+            self.one_river_day()
+
+        return None
