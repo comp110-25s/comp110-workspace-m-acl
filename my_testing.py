@@ -18,3 +18,22 @@ def sum(head: Node | None) -> int:
     else:
         rest: int = sum(head.next)
         return head.value + rest
+
+
+n0: Node = Node(80, None)
+n1: Node = Node(50, n0)
+n2: Node = Node(70, n1)
+n3: Node = Node(90, n1)
+n4: Node = Node(100, n3)
+n5: Node = Node(110, n4)
+
+
+def last(head: Node) -> int:
+    if head.next is None:
+        return head.value
+
+    else:
+        return last(head.next)
+
+
+print("my value is " + str(last(n5)) + "!")

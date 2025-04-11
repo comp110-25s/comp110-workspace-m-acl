@@ -41,7 +41,7 @@ class River:
     def check_ages(self) -> None:
         """oldies die :("""
         new_fish: list[Fish] = []
-        new_bear: list[Bear] = []
+        new_bears: list[Bear] = []
         for fishboi in self.fish:
             # less than lives
             if fishboi.age < 3:
@@ -49,20 +49,55 @@ class River:
 
         for bear in self.bears:
             if bear.age < 5:
-                new_bear.append(bear)
+                new_bears.append(bear)
+
+        self.fish = new_fish
+        self.bears = new_bears
+
+        return None
+
+    def remove_fish(self, amount: int) -> None:
+        """first fish go bye bye"""
+        for f_idx in range(amount):
+            self.fish.pop(f_idx - 1)
 
         return None
 
     def bears_eating(self):
+        """bear go chomp da fishies"""
+        # doing >=5 check as fish wont increase in the eating process
+        # this way if num fish left is < 5 we just skip over looping the bears
+        if len(self.fish) >= 5:
+            for bear in self.bears:
+                if len(self.fish) >= 5:
+                    bear.eat(3)
+
         return None
 
     def check_hunger(self):
+        """Checks if bears die from hunger"""
+        new_bears: list[Bear] = []
+        for bear in self.bears:
+            if bear.hunger_score >= 0:
+                new_bears.append(bear)
+
+        self.bears = new_bears
         return None
 
     def repopulate_fish(self):
+        num_babies = (len(self.fish) // 2) * 4
+
+        for _ in range(0, num_babies):
+            self.fish.append(Fish())
+
         return None
 
     def repopulate_bears(self):
+        num_babies = len(self.bears) // 2
+
+        for _ in range(0, num_babies):
+            self.bears.append(Bear())
+
         return None
 
     def view_river(self) -> None:
