@@ -133,7 +133,7 @@ class River:
         self.view_river()
 
     def one_river_week(self) -> None:
-        for _ in range(1, 7):
+        for _ in range(0, 7):
             self.one_river_day()
 
         return None
